@@ -24,18 +24,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter(Context context, ArrayList<Image> galleryList, ArrayList<String> paths) {
         this.paths = paths;
         this.context = context;
-        this.galleryList = galleryList;
-    }
+        this.galleryList = galleryList; }
 
-    // Создание нового объекта View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_cell, parent, false);
-        return new ViewHolder(view);
-    }
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_bigger_image, parent, false);
+        return new ViewHolder(view); }
 
-    // Меняет контент объкта View
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         viewHolder.img.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -44,15 +40,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 img = v.findViewById(R.id.img);
-                Intent intent = new Intent(v.getContext(), AAAAAAAAA.class);
+                Intent intent = new Intent(v.getContext(), Bigger_image.class);
                 intent.putExtra("Index", position);
                 intent.putExtra("Image", galleryList.get(position).getPath());
                 intent.putExtra("Paths", paths);
                 v.getContext().startActivity(intent);
                 Toast.makeText(context, galleryList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+            }});}
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView img;
@@ -60,8 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public ViewHolder(View view) {
             super(view);
             img = view.findViewById(R.id.img);
-        }
-    }
+        }}
 
     @Override
     public int getItemCount() {
@@ -73,6 +66,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         if (imgFile.exists()) {
             Bitmap myBitmap = ImageHelper.decodeSampleBitmapFromPath(imgFile.getAbsolutePath(), 200, 200);
             image.setImageBitmap(myBitmap);
-        }
-    }
-}
+        }}}
