@@ -3,9 +3,6 @@ package com.example.gayllary;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-/**
- * методы позволяют уменьшить размеры изображения для лучшего представления
- */
 public class ImageHelper {
     public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int width = options.outWidth;
@@ -18,8 +15,7 @@ public class ImageHelper {
 
             while ((halfWidth / inSampleSize) > reqWidth && (halfHeight / inSampleSize) > reqHeight) {
                 inSampleSize *= 2;
-            }
-        }
+            }}
         return inSampleSize;
     }
 
@@ -30,5 +26,4 @@ public class ImageHelper {
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeFile(pathname, options);
-    }
-}
+    }}
